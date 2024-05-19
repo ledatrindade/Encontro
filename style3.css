@@ -40,7 +40,8 @@
   margin: 20px 0px 15px 0px;
 }
 .desc-musica span {
-  color: #f7f7f7;
+  color: #abaaaa;
+  margin-top: 10px;
   font-style: italic;
 }
 .conteudo-musica p {
