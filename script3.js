@@ -1,17 +1,25 @@
 // Método de áudio
 const music = new Audio('./assets/Billie.mp3');
 
-// chamdando variaveis
+// Chamando variáveis
 const progressBar = document.querySelector("#progressBar");
 const buttonPlay = document.querySelector('#play');
 const buttonPause = document.querySelector('#pause');
+const buttonVoltar = document.querySelector('#voltar');
+const buttonAvançar = document.querySelector('#avançar');
 const tempoAtual = document.querySelector("#tempoAtual");
 const tempoTotal = document.querySelector("#tempoTotal");
 
-// metodo de audio
+// Método de áudio
 let interval;
 
-//funçoes
+// Funções
+function updateMusic() {
+    console.log("Updating music...");
+    music.src = './assets/Billie.mp3'; // Certifique-se de que o caminho está correto
+    music.load();
+    play();
+  }
 
 function formatarTempo(segundos) {
   const min = Math.floor(segundos / 60);
@@ -30,17 +38,30 @@ music.addEventListener('loadedmetadata', function () {
 });
 
 function play() {
-  buttonPlay.classList.add('hide');
-  buttonPause.classList.remove('hide');
-  music.play();
-  interval = setInterval(updateMusicTime, 1000);
-}
-
-function pause() {
-  buttonPlay.classList.remove('hide');
-  buttonPause.classList.add('hide');
-  music.pause();
-}
+    buttonPlay.classList.toggle('hide');
+    buttonPause.classList.toggle('hide');
+    music.play();
+    interval = setInterval(updateMusicTime, 1000);
+  }
+  
+  function pause() {
+    buttonPlay.classList.toggle('hide');
+    buttonPause.classList.toggle('hide');
+    music.pause();
+    clearInterval(interval);
+  }
 
 buttonPlay.addEventListener('click', play);
 buttonPause.addEventListener('click', pause);
+
+// Adicionando redirecionamento para página de música ao clicar em "avançar"
+buttonAvançar.addEventListener('click', () => {
+  window.location.href = 'index.html';
+});
+
+// Adicionando redirecionamento para página de música ao clicar em "voltar"
+buttonVoltar.addEventListener('click', () => {
+  window.location.href = 'index2.html';
+});
+
+updateMusic();

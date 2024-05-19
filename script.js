@@ -1,17 +1,23 @@
 // Método de áudio
 const music = new Audio('./assets/Taylor.mp3');
 
-// chamdando variaveis
+// Chamando variáveis
 const progressBar = document.querySelector("#progressBar");
 const buttonPlay = document.querySelector('#play');
 const buttonPause = document.querySelector('#pause');
+const buttonVoltar = document.querySelector('#voltar');
+const buttonAvançar = document.querySelector('#avançar');
 const tempoAtual = document.querySelector("#tempoAtual");
 const tempoTotal = document.querySelector("#tempoTotal");
 
-// metodo de audio
+// Método de áudio
 let interval;
 
-//funçoes
+// Funções
+function updateMusic() {
+  console.log("Updating music...");
+  music.load(); // Carregar o áudio
+}
 
 function formatarTempo(segundos) {
   const min = Math.floor(segundos / 60);
@@ -27,20 +33,34 @@ function updateMusicTime() {
 
 music.addEventListener('loadedmetadata', function () {
   tempoTotal.textContent = formatarTempo(music.duration);
+  play(); // Iniciar a reprodução após carregar os metadados
 });
 
 function play() {
-  buttonPlay.classList.add('hide');
-  buttonPause.classList.remove('hide');
+  buttonPlay.classList.toggle('hide');
+  buttonPause.classList.toggle('hide');
   music.play();
   interval = setInterval(updateMusicTime, 1000);
 }
 
 function pause() {
-  buttonPlay.classList.remove('hide');
-  buttonPause.classList.add('hide');
+  buttonPlay.classList.toggle('hide');
+  buttonPause.classList.toggle('hide');
   music.pause();
+  clearInterval(interval);
 }
 
 buttonPlay.addEventListener('click', play);
 buttonPause.addEventListener('click', pause);
+
+// Adicionando redirecionamento para página de música ao clicar em "avançar"
+buttonAvançar.addEventListener('click', () => {
+  window.location.href = 'index2.html';
+});
+
+// Adicionando redirecionamento para página de música ao clicar em "voltar"
+buttonVoltar.addEventListener('click', () => {
+  window.location.href = 'index3.html';
+});
+
+updateMusic();
