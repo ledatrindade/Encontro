@@ -8,7 +8,7 @@
 }
 :root {
     font-size: 62.5%;
-    background-image: linear-gradient(to left,#cc92ff, #ffffff);
+    background-image: linear-gradient(to left,#c2aaf5, #663a8d);
     height: 100vh;
 }
 .hide {
@@ -22,7 +22,7 @@
 }
 
 .card-player {
-  background: #c2aaf5;
+  background: hsl(260, 47%, 19%);
   color: #fff;
   display: flex;
   flex-direction: column;
@@ -80,7 +80,7 @@
     appearance: none;
     width: 16px; /* largura da bolinha */
     height: 16px; /* altura da bolinha */
-    background: #666; /* cor da bolinha */
+    background: #a77eff; /* cor da bolinha */
     border-radius: 50%; /* torna a bolinha redonda */
     cursor: pointer;
   }
