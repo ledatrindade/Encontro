@@ -1,22 +1,25 @@
 // Método de áudio
 const music = new Audio('./assets/Billie.mp3');
 
+
 // Chamando variáveis
 const progressBar = document.querySelector("#progressBar");
 const buttonPlay = document.querySelector('#play');
 const buttonPause = document.querySelector('#pause');
 const buttonVoltar = document.querySelector('#voltar');
-const buttonAvançar = document.querySelector('#avançar');
+const buttonAvancar = document.querySelector('#avancar');
 const tempoAtual = document.querySelector("#tempoAtual");
 const tempoTotal = document.querySelector("#tempoTotal");
+
 
 // Método de áudio
 let interval;
 
+
 // Funções
 function updateMusic() {
     console.log("Updating music...");
-    music.src = './assets/Billie.mp3'; // Certifique-se de que o caminho está correto
+    music.src = './assets/Billie.mp3'; 
     music.load();
     play();
   }
@@ -54,12 +57,12 @@ function play() {
 buttonPlay.addEventListener('click', play);
 buttonPause.addEventListener('click', pause);
 
-// Adicionando redirecionamento para página de música ao clicar em "avançar"
-buttonAvançar.addEventListener('click', () => {
+
+buttonAvancar.addEventListener('click', () => {
   window.location.href = 'index.html';
 });
 
-// Adicionando redirecionamento para página de música ao clicar em "voltar"
+
 buttonVoltar.addEventListener('click', () => {
   window.location.href = 'index2.html';
 });
